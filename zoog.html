@@ -1,0 +1,104 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+
+<head>
+    <title>p5js Template</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.5.3/p5.js"></script>
+    
+    <script>
+        function setup() {
+            createCanvas(700,700)
+            
+            
+        }
+
+        function draw() {
+            /* The outline and color of the skull*/
+            fill(206,208,221)
+            stroke(206,208,221)
+            ellipse(400,150,250,200)
+            rect(325,185,150,150)
+            /* The nose of the skull which shows the color,coordination*/
+            fill("black")
+            triangle(370,220,400,175,430,220)
+            /* The hat of the skull's color and coordination*/
+            strokeWeight(12)
+            stroke("black")
+            line(340,50,460,50)
+            rect(365,5.5,65,44)
+            /*The eyes:pupils and other parts of the eye's color,coordinates*/
+            strokeWeight(1)
+            fill("white")
+            ellipse(360,135,50,50)
+            ellipse(440,135,50,50)
+            fill(115,240,12)
+            ellipse(360,135,25,25)
+            fill("blue")
+            ellipse(440,135,25,25)
+            fill("black")
+            ellipse(360,135,12.5,12.5)
+            ellipse(440,135,12.5,12.5)
+            /* The coordinates of the mouth*/
+            fill("white")
+            rect(365,270,80,50)
+            line(365,295,445,295)
+            line(385,270,385,320)
+            line(405,270,405,320)
+            line(425,270,425,320)
+            stroke("gray")
+            strokeWeight(2)
+            /* The sun glasses' color and coordinates, and outline*/
+            fill("black")
+            rect(325,135,65,30)
+            rect(405,135,65,30)
+            fill(20,22,21)
+            strokeWeight(1)
+            fill(69,69,69)
+            stroke("black")
+            rect(350,150,35,10)
+            rect(430,150,35,10)
+            stroke("gray")
+            strokeWeight(2)
+            line(390,150,405,150)
+            line(275,130,325,150)
+            line(525,130,470,150)
+            strokeWeight(4.5)
+            stroke("lightgreen")
+            line(361,45,435,45)
+            /* Coordinates and colors of the skeleton's body and staff*/
+            stroke("black")
+            line(405,339,405,550)
+            line(405,550,330,650)
+            line(405,550,480,650)
+            line(405,390,490,390)
+            line(405,390,320,390)
+            line(490,380,490,640)
+            strokeWeight(1.5)
+            stroke("white")
+            line(404.5,339,404.5,540)
+            stroke(255,114,0)
+            fill(255,114,0)
+            ellipse(490,360,30,30)
+            rect(480,365,20,15)
+            stroke("black")
+            strokeWeight(4.5)
+            point(485,355)
+            point(495,355)
+            line(487,375,492,375)
+        }
+    </script>
+</head>
+<body>
+    <div id="code" class="container-fluid">
+        <script src="https://gist-it.appspot.com/github/kasperg3971/p5js/blob/gh-pages/FILENAME.html?footer=0"></script>
+    </div>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+    <script>
+        $(window).bind("load", function() {
+            $('#code').before($('#defaultCanvas0').remove());
+        });
+    </script>
+</body>
+
+</html>
