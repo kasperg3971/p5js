@@ -1,0 +1,90 @@
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+
+<head>
+    <title>p5js Template</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.5.3/p5.js"></script>
+    
+    <script>
+        var scale = 1
+        var centerX = 5
+        var centerY = 5
+        var y =100
+        var opacity = 200
+        
+        function setup() {
+            createCanvas(800,800);
+        }
+
+        function draw() {
+             /* creates a loop of 2 lines that erase the circles I created */ 
+             y = y - 1; 
+            if (y < 0) { 
+                y = height - 100;
+                y = width - 100
+                }
+            stroke(200,50,20)
+            line(0, y, height, y);
+            stroke("green")
+            line(y,0, y, width)
+            fill("green")
+            stroke(0,0,0)
+            /* Creates the circle with random shades of blue and
+            has opposite coordinates of where the mouse moves, a square with random shades
+            of green and follows the mouse, different random triangles with random colors and follow the mouse
+            , and creates a line with random colors that is connected with the coordinates of the mouse and the coordinate of 
+            center of the circle */
+            fill(random(33,333),random(220,250),25,200)
+            rect(mouseX,mouseY,centerX + 60,centerX + 60)
+            fill(random(22,203),random(1,230),random(27,300))
+            triangle(mouseX - random(20,70), mouseY - random(1,100),mouseX + random(15,35),mouseY + random(15,35),mouseX + random(50,75),mouseY + random(50,75))
+            fill(random(50),random(60,260),200)
+            stroke(0,0,0)
+            ellipse(mouseY + 50,mouseX + 50,centerY + 70,centerY + 70)
+            stroke(random(230),random(230),random(80))
+            strokeWeight(5)
+            line(mouseX, mouseY,mouseY + 50,mouseX + 50)
+
+            strokeWeight(1)
+            stroke(0,0,0)
+        }
+        function mouseDragged(){
+            /* when mouse is pressed and moved then the circle becomes smaller and 
+            the square becomes bigger*/
+            centerX = centerX + 0.75 
+            centerY = centerY - 0.75
+        }
+        function mouseMoved(){
+            /* when the mouse is only moved then the circle becomes bigger and the
+            square becomes smaller*/
+            centerX = centerX - 0.75
+            centerY = centerY + 0.75
+        }
+           
+            
+            
+            
+            
+            
+            
+
+    </script>
+</head>
+
+<body>
+    <div id="code" class="container-fluid">
+        <script src="https://gist-it.appspot.com/github/kasperg3971/p5js/blob/gh-pages/interaction-project.html?footer=0"></script>
+    </div>
+
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+    <script>
+        $(window).bind("load", function() {
+            $('#code').before($('#defaultCanvas0').remove());
+        });
+    </script>
+</body>
+
+
+</html>
