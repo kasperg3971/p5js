@@ -75,7 +75,7 @@
 
 <body>
     <div id="code" class="container-fluid">
-        <script src="https://gist-it.appspot.com/github/kasperg3971/p5js/blob/gh-pages/conditional_project.html?footer=0"></script>
+        <script src="https://gist-it.appspot.com/github/kasperg3971/p5js/blob/gh-pages/conditionals_project.html?footer=0"></script>
     </div>
 
 
@@ -86,7 +86,6 @@
         });
     </script>
 </body>
-
 
 
 </html>
