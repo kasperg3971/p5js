@@ -1,0 +1,132 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+
+<head>
+    <title>Pong</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.4.13/p5.js"></script>
+    <script>
+        /* variables are being created and they are for the coordinates and speed*/
+        var ballX;
+        var ballY;
+        var ballSpeedX = 0;
+        var ballSpeedY =  0;
+        var paddleHeight = 30;
+        var paddlewidth = 200
+        var p2paddle = 400
+        var score = 0
+
+        function setup() {
+            createCanvas(800, 600);
+            /* variables are being defined and makes the mouse invisible*/
+            noCursor();
+            ballX = width - random(width);
+            ballY = height / 2;
+        }
+
+        function draw() {
+            /* background is gray and the functions are being declared*/
+            background(18,60,120);
+            
+            moveBall();
+            checkCollide();
+            drawPaddle();
+            
+            drawBall(); 
+            scoreboard();
+            
+         
+        
+        }
+
+        function moveBall() {
+            /*  ball is able to move*/
+            ballX = ballX + ballSpeedX;
+            ballY = ballY + ballSpeedY;
+
+            console.log("ballSpeedX: " + ballSpeedX + 
+                               ", ballSpeedY: " + ballSpeedY);
+        }
+        /* This is a function that checks whether or not the ball hit the paddle*/
+        function checkCollide() {
+            if (ballX < 0 || ballX > width) {
+                ballSpeedX = ballSpeedX * -1;
+            }
+            if (ballY < 0) {
+                ballSpeedY = ballSpeedY * -1;
+            }
+            if (ballY > height - paddleHeight) {
+                if (ballX > mouseX - 100 && ballX < mouseX + paddlewidth - 100) {
+                    ballSpeedY = ballSpeedY * -1;
+                    ballSpeedY -= 2
+                    paddlewidth -= 10
+                    score = score + 2
+                    paddleHeight -= 2
+                    
+                }
+
+                else {
+                    text("Game Over!", width / 2, height / 2);
+                    noLoop();
+                }
+            }
+        }
+        /* This function defines the ball*/
+        function drawBall() {
+            noStroke();
+            fill(random(10,100),random(10,200),random(100))
+            ellipse(ballX, ballY, 20, 20);
+        }
+        /* creates the paddle and the paddle follows the mouse*/
+        function drawPaddle() {
+            strokeWeight(4);
+            fill("lightgreen")
+            rect(mouseX - 100, height - paddleHeight - 4, paddlewidth, paddleHeight);
+        }
+        function mousePressed(){
+            background(128);
+            ballSpeedX = 5
+            ballSpeedY = 5
+        
+        }
+        function keyPressed(){
+            if(ballSpeedX === 5 && ballSpeedY === 5 && keyIsPressed){
+                ballSpeedX = 0
+                ballSpeedY = 0
+            }
+            else{
+                 ballSpeedX = 5
+                 ballSpeedY = 5
+                
+            }
+            
+            
+        }
+        
+        function scoreboard(){
+            stroke("red")
+            textSize(25)
+            strokeWeight(5)
+            fill(random(15,100),random(40,100),random(100,250))
+            text("Points = " + score,width-150, 50)
+        }
+            
+
+    </script>
+</head>
+
+<body>
+<form><input TYPE="button" onClick="history.go(0)" value="Reset"></form>
+<div id="code" class="container-fluid">
+        <script src="https://gist-it.appspot.com/github/kasperg3971/p5js/blob/gh-pages/pong-remix.html?footer=0"></script>
+    </div>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+    <script>
+        $(window).bind("load", function() {
+            $('#code').before($('#defaultCanvas0').remove());
+        });
+    </script>
+
+</body>
+
+</html>
