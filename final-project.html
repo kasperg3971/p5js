@@ -1,0 +1,195 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+
+<head>
+    <title>p5js Template</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.5.3/p5.js"></script>
+
+    <script>
+    /* creates different variables*/
+        var img;
+        var body;
+        var boxes = [];
+        var x = 75;
+        var y = 100;
+        var z = 70;
+        var s = 70;
+        var score = 0;
+
+    /* image of yellow jacket */
+        function preload() { 
+            body = loadImage("Yellowjacket.png");
+        }
+
+        function setup() {
+            createCanvas(500, 500);
+        }
+
+        function draw() {
+            background(50, 205, 50);
+            /* direction of the game */
+            textFont("Georgia");
+            textSize(13);
+            strokeWeight(1);
+            fill(0);
+            text("In this game, you will click on the squares and each square have one question.", 30, 30);
+            text("If you answer all the questions correctly, you can move on to the next square.", 30, 50);
+            text("If you did not answer one question correctly, then you lose.", 30, 70);
+
+            /* show squares */
+            for (var i = 0; i < boxes.length; i++) {
+                boxes[i].display();
+            }
+            /* creates the starting square */
+            strokeWeight(4);
+            fill(238, 130, 238);
+            rect(75, 100, 50, 50);
+            text("START", 80, 125);
+            boxes.push(new Box()); // adds squares
+            /* show the functions */
+            drawBody();
+            scoreboard();
+            win();
+        }
+        
+        /* creates the yellow jacket */
+        function drawBody() { 
+            noStroke();
+            fill(3);
+            image(body, z, s, body.width / 4, body.height / 4);
+        }
+        
+        /* creates an object of the boxes */
+        function Box() {
+            this.x = 150;
+            this.y = 100;
+            this.display = function() {
+                strokeWeight(4);
+                stroke(0, 0, 0);
+                fill('red');
+                rect(this.x, this.y, 50, 50);
+                this.x += 50;
+            }
+        }
+
+        /* ask the user a question if the user press any square */
+        function mousePressed() {
+            if (mouseX >= 150 && mouseX <= 200 && mouseY >= 100 && mouseY <= 150) {
+                var q1 = prompt("Factor (x+4)(x-4).");
+                z = 170; // moving the yellowjacket
+                s = 100;
+                if (q1 == "x^2-16") {
+                    score = score + 1;
+                }
+                else {
+                    score = -1;
+                }
+            }
+            if (mouseX >= 200 && mouseX <= 250 && mouseY >= 100 && mouseY <= 150) {
+                var q2 = prompt("What is 2^6 * 2^4?");
+                z = 220;
+                if (q2 == "2^10" || q2 == "1024") {
+                    score = score + 1;
+                }
+                else {
+                    score = -1;
+                }
+            }
+            if (mouseX >= 250 && mouseX <= 300 && mouseY >= 100 && mouseY <= 150) {
+                z = 270;
+                var q3 = prompt("Who was the leader during the Russian Revolution? (Name is a Noun)");
+                if (q3 == "Joesph Stalin" || q3 == "Stalin") {
+                    score = score + 1;
+                }
+                else {
+                    score = -1;
+                }
+            }
+            if (mouseX >= 300 && mouseX <= 350 && mouseY >= 100 && mouseY <= 150) {
+                z = 320;
+                var q4 = prompt("A change of the DNA in an organism that results in a new trait is known as a?");
+                if (q4 == "Mutation" || q4 == "mutation") {
+                    score = score + 1;
+                }
+                else {
+                    score = -1;
+                }
+            }
+            if (mouseX >= 350 && mouseX <= 400 && mouseY >= 100 && mouseY <= 150) {
+                z = 370;
+                var q5 = prompt("The act of confiscating all private land to public for agriculture is called?");
+                if (q5 == "Collectivization" || q5 == "collectivization") {
+                    score = score + 1;
+                }
+                else {
+                    score = -1;
+                }
+            }
+            if (mouseX >= 400 && mouseX <= 450 && mouseY >= 100 && mouseY <= 150) {
+                z = 420;
+                var q6 = prompt("If Sinθ < 0 and Tanθ > 0, which quadrant will θ land on? (I, II, III, IV)");
+                if (q6 == "III") {
+                    score = score + 1;
+                }
+                else {
+                    score = -1;
+                }
+            }
+            if (mouseX >= 450 && mouseX <= 500 && mouseY >= 100 && mouseY <= 150) {
+                z = 470;
+                var q7 = prompt("What type of element is Ca?");
+                if (q7 == "Metal" || q7 == "metal") {
+                    score = score + 1;
+                }
+                else {
+                    score = -1;
+                }
+            }
+        }
+
+        /*shows the points*/
+        function scoreboard() {
+            textSize(25);
+            stroke(0);
+            strokeWeight(5);
+            fill(205, 150, 0);
+            text("Points = " + score, width - 150, height - 50);
+        }
+
+        /*determines whether the user win or lose*/
+        function win() {
+            /*if user answers all questions correct*/ 
+            if (score == 7) {
+                background('purple');
+                fill(202, 202, 200);
+                textSize(20);
+                text("YOU WON!!!", width / 2, height / 2);
+            }
+            /*if user answer a question wrong*/
+            if (score == -1) {
+                background('yellow');
+                textSize(20);
+                text("Why... JUST WHY WOULD YOU LOSE", width / 4, height / 2);
+            }
+        }
+        
+    </script>
+</head>
+
+
+<body>
+    <div id="code" class="container-fluid">
+        <script src="https://gist-it.appspot.com/github/kasperg3971/p5js/blob/gh-pages/final-project.html?footer=0"></script>
+    </div>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+    <script>
+        $(window).bind("load", function() {
+            $('#code').before($('#defaultCanvas').remove());
+        });
+    </script>
+</body>
+
+
+
+</html>
